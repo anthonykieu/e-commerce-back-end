@@ -2,7 +2,7 @@
   "name": "e-commerce-back-end",
   "version": "1.0.0",
   "description": "You’ll need to use the MySQL2 and Sequelize packages to connect your Express.js API to a MySQL database and the Dotenv package to use environment variables to store sensitive data, like your MySQL username, password, and database name. Use the schema.sql file in the db folder to create your database using MySQL shell commands. Use environment variables to store sensitive data, like your MySQL username, password, and database name.",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
