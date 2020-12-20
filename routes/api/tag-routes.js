@@ -10,8 +10,8 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
-        // through: ProductTag,
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
+        through: ProductTag
       },
     ]
   })
@@ -32,8 +32,8 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
-        // through: ProductTag,
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
+        through: ProductTag
       },
     ]
   })
@@ -64,13 +64,18 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
-  Tag.update(req.body, {
+  Tag.update(
+    {
+      id: req.body.id,
+      tag_name: req.body.tag_name
+    },
+    {
     where: {
       id: req.params.id
     }
   })
     .then(dbTagData => {
-      if (!dbTagData[0]) {
+      if (!dbTagData) {
         res.status(404).json({ message: 'No tag found with this id' });
         return;
       }
