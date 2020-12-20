@@ -1,161 +1,41 @@
-You’ll need to use the MySQL2 and Sequelize packages to connect your Express.js API to a MySQL database and the Dotenv package to use environment variables to store sensitive data, like your MySQL username, password, and database name.
-Use the schema.sql file in the db folder to create your database using MySQL shell commands. Use environment variables to store sensitive data, like your MySQL username, password, and database name.
-
-Database Models
-Your database should contain the following four models, including the requirements listed for each model:
-
-
-Category
-
-
-id
-
-Integer
-Doesn't allow null values
-Set as primary key
-Use auto increment
-
-
-
-category_name
-
-String
-Doesn't allow null values
-
-
-
-
-
-Product
-
-
-id
-
-Integer
-Don't allow null values
-Set as primary key
-Use auto increment
-
-
-
-product_name
-
-String
-Doesn't allow null values
-
-
-
-price
-
-Decimal
-Doesn't allow null values
-Validate that the value is a decimal
-
-
-
-stock
-
-Integer
-Doesn't allow null values
-Set a default value of 10
-Validate that the value is numeric
-
-
-
-category_id
-
-Integer
-Reference the category model's id
-
-
-
-
-
-
-Tag
-
-
-id
-
-Integer
-Don't allow null values
-Set as primary key
-Use auto increment
-
-
-
-tag_name
-
-String
-
-
-
-
-
-ProductTag
-
-
-id
-
-Integer
-Don't allow null values
-Set as primary key
-Use auto increment
-
-
-
-product_id
-
-Integer
-Reference the product model's id
-
-
-
-
-tag_id
-
-Integer
-Reference the tag model's id
-
-
-
-
-
-
-
-Associations
-You'll need to execute association methods on your Sequelize models to create the following relationships between them:
-
-
-Product belongs to Category, as a Category can have multiple Products but a Product can only belong to one Category
-
-
-Category has many Product
-
-
-Product belongs to many Tag, using the ProductTag through model, allow Products to have multiple Tags and Tags have many Products
-
-
-Tag belongs to many Product
-
-
-
-Hint: Make sure you set up foreign key relationships that match the column we created in the respective models.
-
-
-Fill out the API Routes to Perform RESTful CRUD Operations
-Fill out the unfinished routes in product-routes.js, tag-routes.js, and category-routes.js to perform Create, Read, Update, and Delete operations using your Sequelize models.
-
-Note: The functionality for creating the many-to-many relationship for products is already done for you.
-
-
-Hint: Be sure to look at your module project's code for syntax help and use your model's column definitions to figure out what req.body will be for POST and PUT routes!
-
-
-Seed the Database
-After creating the models and routes, run npm run seed to seed data to your database so you can test your routes.
-
-Sync Sequelize to the Database on Server Start
-Create the code needed in server.js to sync our Sequelize models to our MySQL database on server start.
-
-Review
+ ![NPM](https://img.shields.io/badge/Mozilla-License-orange)
+
+  ## Description
+  The purpose of this code is to develop a e-commerce database allowing the storage and retrieval of product information. Since the application is not deployed, Querying the database can be done using Insomnia
+  
+   using command line, Mysql, and node.js. The goal is to be able to search, add to, and update the Mysql database and generate tables to display the information 
+
+  ## Table of Contents
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contributing](#contributing)
+  * [Questions](#questions)
+
+  ## Installation
+  Open the command line. Go to the https://github.com/anthonykieu/e-commerce-back-end and copy and clone the code. Go to https://nodejs.org/en/ and install Node.js. Open the command line 
+  install the following:
+  
+  * npm init
+  * npm install sequelize
+  *  npm install express
+  * npm install mysql2
+  * npm install dotenv
+  * npm install nodeman
+  
+
+  ## Usage
+  Open the code in Visual Studio. In the terminal enter "mysql -u -root -p" and then the password "2020Tennis02". Select the database by entering "use ecommerce_db". Quit mysql load the seed files by entering "npm run seed" in the bash shell terminal. Start the program by entering "npm start" and the terminal should say "Now Listening. Open the Insomnia application and query the database using the routes in the application.
+
+  ## License
+  Mozilla</br>
+  https://choosealicense.com/licenses/mpl-2.0/
+
+  ## Questions
+  If you would like further information, you can go to my Github profile at https://github.com/anthonykieu.
+
+   ## Links
+   Video walkthrough:  https://drive.google.com/file/d/1LipquXYCBHZGfLrZhjKIOvqnWlskL43y/view
+   
+  
+  You can also reach me at my email at xxx.yahoo.com.
