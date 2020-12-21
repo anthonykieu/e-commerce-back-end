@@ -80,11 +80,6 @@ router.post('/', (req, res) => {
     // stock: req.body.stock,
     // category_id: req.body.category_id
     req.body
-    // , {
-    // where: {
-    //   id: req.params.id,
-    // }
-  // }
   )
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
@@ -114,15 +109,9 @@ router.put('/:id', (req, res) => {
   //   where: {
   //     id: req.params.id,
   //   },
-  Product.update({
-    id: req.body.id,
-    product_name: req.body.product_name,
-    price: req.body.price,
-    stock: req.body.stock,
-    category_id: req.body.category_id,
-    tag_name: req.body.tag_name,
-  },
-    {
+  Product.update(
+     req.body,
+     {
       where: {
         id: req.params.id,
       },
@@ -145,7 +134,7 @@ router.put('/:id', (req, res) => {
         });
       // figure out which ones to remove
       const productTagsToRemove = productTags
-        .filter(({ tag_id }) => !req.body.tagIds.includes(tag_id))
+        .filter(({ tag_id }) => !req.body.tags.includes(tag_id))
         .map(({ id }) => id);
 
       // run both actions
