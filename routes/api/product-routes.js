@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
       },
       {
         model: Tag,
-        attributes: ['id', 'tag_name'],
+        // attributes: ['id', 'tag_name'],
         through: ProductTag
       }
     ]
@@ -42,12 +42,12 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Tag,
-        attributes: ['id', 'tag_name'],
+        // attributes: ['id', 'tag_name'],
         through: ProductTag
       },
       {
         model: Category,
-        attributes: ['id', 'category_name']
+        // attributes: ['id', 'category_name']
       }
     ]
   })
@@ -116,7 +116,7 @@ router.put('/:id', (req, res) => {
         id: req.params.id,
       },
   })
-    .then((product) => {
+    .then(() => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
     })
